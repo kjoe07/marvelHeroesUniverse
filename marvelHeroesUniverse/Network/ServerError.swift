@@ -16,6 +16,8 @@ enum ServerError: Error, LocalizedError {
     /// the id is empyt
     case emptyId
     case serverError
+    case invalidURL
+    case nullHeaders
     /// errror Description
     ///
     /// localized response from the current error in human readable format
@@ -31,6 +33,10 @@ enum ServerError: Error, LocalizedError {
             return "the id for the requested action could no be an empty string please use a valid string id"
         case .serverError:
             return "Internal server error"
+        case .invalidURL:
+            return "the url for the resource is not valid"
+        case .nullHeaders:
+            return "the headers are null, please add the required headers"
         }
     }
 }

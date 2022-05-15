@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11A0622C2830B480006EC955 /* CharacterListEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A0622B2830B480006EC955 /* CharacterListEndpoint.swift */; };
+		11A0622E2830B581006EC955 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A0622D2830B581006EC955 /* HomeViewModel.swift */; };
+		11A062312830B8C5006EC955 /* CharacterListEndpointFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A062302830B8C5006EC955 /* CharacterListEndpointFactory.swift */; };
+		11A062332830BA5E006EC955 /* EndpointFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A062322830BA5E006EC955 /* EndpointFactory.swift */; };
 		11FAB713283065EE0037387E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FAB712283065EE0037387E /* AppDelegate.swift */; };
 		11FAB715283065EE0037387E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FAB714283065EE0037387E /* SceneDelegate.swift */; };
 		11FAB71C283065F00037387E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11FAB71B283065F00037387E /* Assets.xcassets */; };
@@ -52,6 +56,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		11A0622B2830B480006EC955 /* CharacterListEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListEndpoint.swift; sourceTree = "<group>"; };
+		11A0622D2830B581006EC955 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		11A062302830B8C5006EC955 /* CharacterListEndpointFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListEndpointFactory.swift; sourceTree = "<group>"; };
+		11A062322830BA5E006EC955 /* EndpointFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointFactory.swift; sourceTree = "<group>"; };
 		11FAB70F283065EE0037387E /* marvelHeroesUniverse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = marvelHeroesUniverse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11FAB712283065EE0037387E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11FAB714283065EE0037387E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -108,6 +116,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		11A0622A2830B46E006EC955 /* Endpoint */ = {
+			isa = PBXGroup;
+			children = (
+				11A0622B2830B480006EC955 /* CharacterListEndpoint.swift */,
+				11A062322830BA5E006EC955 /* EndpointFactory.swift */,
+			);
+			path = Endpoint;
+			sourceTree = "<group>";
+		};
+		11A0622F2830B89B006EC955 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				11A062302830B8C5006EC955 /* CharacterListEndpointFactory.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
 		11FAB706283065EE0037387E = {
 			isa = PBXGroup;
 			children = (
@@ -188,6 +213,8 @@
 		11FAB74528307C920037387E /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				11A0622F2830B89B006EC955 /* Factory */,
+				11A0622A2830B46E006EC955 /* Endpoint */,
 				11FAB74A28307CE10037387E /* Protocols */,
 				11FAB74928307CDB0037387E /* ViewModels */,
 				11FAB74728307CC90037387E /* Views */,
@@ -230,6 +257,7 @@
 		11FAB74928307CDB0037387E /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				11A0622D2830B581006EC955 /* HomeViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -394,12 +422,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				11FAB7622830970A0037387E /* Comic.swift in Sources */,
+				11A0622E2830B581006EC955 /* HomeViewModel.swift in Sources */,
 				11FAB76828309AD90037387E /* Storie.swift in Sources */,
 				11FAB75328307F600037387E /* DataLoaderProtocol.swift in Sources */,
 				11FAB75128307EF20037387E /* ServerError.swift in Sources */,
 				11FAB760283096090037387E /* Thumbnail.swift in Sources */,
 				11FAB76E28309D930037387E /* Response.swift in Sources */,
+				11A062312830B8C5006EC955 /* CharacterListEndpointFactory.swift in Sources */,
 				11FAB764283097710037387E /* Item.swift in Sources */,
+				11A0622C2830B480006EC955 /* CharacterListEndpoint.swift in Sources */,
 				11FAB75C2830900A0037387E /* CharacterListService.swift in Sources */,
 				11FAB74F28307EB50037387E /* NetworkLoader.swift in Sources */,
 				11FAB75628307FD80037387E /* HttpMethod.swift in Sources */,
@@ -407,6 +438,7 @@
 				11FAB758283080310037387E /* EndpointProtocol.swift in Sources */,
 				11FAB76628309A660037387E /* Serie.swift in Sources */,
 				11FAB713283065EE0037387E /* AppDelegate.swift in Sources */,
+				11A062332830BA5E006EC955 /* EndpointFactory.swift in Sources */,
 				11FAB75A28308CE10037387E /* ServiceProtocol.swift in Sources */,
 				11FAB715283065EE0037387E /* SceneDelegate.swift in Sources */,
 				11FAB76A28309B300037387E /* Event.swift in Sources */,
