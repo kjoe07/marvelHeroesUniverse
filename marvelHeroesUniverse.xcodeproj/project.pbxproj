@@ -11,6 +11,12 @@
 		11A0622E2830B581006EC955 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A0622D2830B581006EC955 /* HomeViewModel.swift */; };
 		11A062312830B8C5006EC955 /* CharacterListEndpointFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A062302830B8C5006EC955 /* CharacterListEndpointFactory.swift */; };
 		11A062332830BA5E006EC955 /* EndpointFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A062322830BA5E006EC955 /* EndpointFactory.swift */; };
+		11E2A78E2831B1B10030FBDF /* HeroesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E2A78D2831B1B10030FBDF /* HeroesTableViewCell.swift */; };
+		11E2A7902831B2670030FBDF /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E2A78F2831B2670030FBDF /* CardView.swift */; };
+		11E2A7922831BCE40030FBDF /* HeroesTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E2A7912831BCE40030FBDF /* HeroesTableViewCellViewModel.swift */; };
+		11E2A7942831BFBE0030FBDF /* HeroesTableViewCellRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E2A7932831BFBE0030FBDF /* HeroesTableViewCellRepresentable.swift */; };
+		11E2A7962831C1C00030FBDF /* HomeViewModelRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E2A7952831C1C00030FBDF /* HomeViewModelRepresentable.swift */; };
+		11E2A7992831F3F10030FBDF /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 11E2A7982831F3F10030FBDF /* Kingfisher */; };
 		11FAB713283065EE0037387E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FAB712283065EE0037387E /* AppDelegate.swift */; };
 		11FAB715283065EE0037387E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FAB714283065EE0037387E /* SceneDelegate.swift */; };
 		11FAB71C283065F00037387E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11FAB71B283065F00037387E /* Assets.xcassets */; };
@@ -60,6 +66,11 @@
 		11A0622D2830B581006EC955 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		11A062302830B8C5006EC955 /* CharacterListEndpointFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListEndpointFactory.swift; sourceTree = "<group>"; };
 		11A062322830BA5E006EC955 /* EndpointFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointFactory.swift; sourceTree = "<group>"; };
+		11E2A78D2831B1B10030FBDF /* HeroesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesTableViewCell.swift; sourceTree = "<group>"; };
+		11E2A78F2831B2670030FBDF /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		11E2A7912831BCE40030FBDF /* HeroesTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesTableViewCellViewModel.swift; sourceTree = "<group>"; };
+		11E2A7932831BFBE0030FBDF /* HeroesTableViewCellRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesTableViewCellRepresentable.swift; sourceTree = "<group>"; };
+		11E2A7952831C1C00030FBDF /* HomeViewModelRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelRepresentable.swift; sourceTree = "<group>"; };
 		11FAB70F283065EE0037387E /* marvelHeroesUniverse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = marvelHeroesUniverse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11FAB712283065EE0037387E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11FAB714283065EE0037387E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11E2A7992831F3F10030FBDF /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,6 +245,8 @@
 			isa = PBXGroup;
 			children = (
 				11FAB74B28307CFA0037387E /* HomeViewController.swift */,
+				11E2A78D2831B1B10030FBDF /* HeroesTableViewCell.swift */,
+				11E2A78F2831B2670030FBDF /* CardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -258,6 +272,7 @@
 			isa = PBXGroup;
 			children = (
 				11A0622D2830B581006EC955 /* HomeViewModel.swift */,
+				11E2A7912831BCE40030FBDF /* HeroesTableViewCellViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -265,6 +280,8 @@
 		11FAB74A28307CE10037387E /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				11E2A7932831BFBE0030FBDF /* HeroesTableViewCellRepresentable.swift */,
+				11E2A7952831C1C00030FBDF /* HomeViewModelRepresentable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -307,6 +324,9 @@
 			dependencies = (
 			);
 			name = marvelHeroesUniverse;
+			packageProductDependencies = (
+				11E2A7982831F3F10030FBDF /* Kingfisher */,
+			);
 			productName = marvelHeroesUniverse;
 			productReference = 11FAB70F283065EE0037387E /* marvelHeroesUniverse.app */;
 			productType = "com.apple.product-type.application";
@@ -379,6 +399,9 @@
 				Base,
 			);
 			mainGroup = 11FAB706283065EE0037387E;
+			packageReferences = (
+				11E2A7972831F3F10030FBDF /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 11FAB710283065EE0037387E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -421,7 +444,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11E2A7922831BCE40030FBDF /* HeroesTableViewCellViewModel.swift in Sources */,
 				11FAB7622830970A0037387E /* Comic.swift in Sources */,
+				11E2A78E2831B1B10030FBDF /* HeroesTableViewCell.swift in Sources */,
 				11A0622E2830B581006EC955 /* HomeViewModel.swift in Sources */,
 				11FAB76828309AD90037387E /* Storie.swift in Sources */,
 				11FAB75328307F600037387E /* DataLoaderProtocol.swift in Sources */,
@@ -437,9 +462,12 @@
 				11FAB76C28309B810037387E /* Url.swift in Sources */,
 				11FAB758283080310037387E /* EndpointProtocol.swift in Sources */,
 				11FAB76628309A660037387E /* Serie.swift in Sources */,
+				11E2A7942831BFBE0030FBDF /* HeroesTableViewCellRepresentable.swift in Sources */,
+				11E2A7962831C1C00030FBDF /* HomeViewModelRepresentable.swift in Sources */,
 				11FAB713283065EE0037387E /* AppDelegate.swift in Sources */,
 				11A062332830BA5E006EC955 /* EndpointFactory.swift in Sources */,
 				11FAB75A28308CE10037387E /* ServiceProtocol.swift in Sources */,
+				11E2A7902831B2670030FBDF /* CardView.swift in Sources */,
 				11FAB715283065EE0037387E /* SceneDelegate.swift in Sources */,
 				11FAB76A28309B300037387E /* Event.swift in Sources */,
 				11FAB77028309E0D0037387E /* CharacterData.swift in Sources */,
@@ -611,16 +639,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ZS8BG3AB6Y;
+				DEVELOPMENT_TEAM = UK8ZTJLF6D;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = marvelHeroesUniverse/Resources/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Marvel heroes";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -639,16 +670,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ZS8BG3AB6Y;
+				DEVELOPMENT_TEAM = UK8ZTJLF6D;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = marvelHeroesUniverse/Resources/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Marvel heroes";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -778,6 +812,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		11E2A7972831F3F10030FBDF /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		11E2A7982831F3F10030FBDF /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 11E2A7972831F3F10030FBDF /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 11FAB707283065EE0037387E /* Project object */;
 }

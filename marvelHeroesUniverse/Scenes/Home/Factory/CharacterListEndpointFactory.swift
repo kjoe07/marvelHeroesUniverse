@@ -13,7 +13,7 @@ struct CharacterListEndpointFactory {
         if query != nil {
             items.append(URLQueryItem(name: "name", value: query))
         }
-        let headers = ["Content-Type": "application/json"]
+        let headers = ["Content-Type": "application/json", "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.3 Safari/605.1.15", "Referer": "https://developer.marvel.com/","Origin": "https://developer.marvel.com"]
         return CharacterListEnpoint(path: path, queryItems: items, headers: headers, method: .get)
     }
 }

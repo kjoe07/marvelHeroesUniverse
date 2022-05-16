@@ -19,21 +19,22 @@ class HomeViewModel {
     }
     
     func numberOfItems() -> Int {
-        return characterListData.results.count
+        return characterListData != nil ? characterListData.results.count : 0
     }
     
-    func viewModelfor(index: Int) {
-        
+    func viewModelfor(index: Int) -> HeroesTableViewCellViewModelRepresentable {
+        return HeroesTableViewCellViewModel(heroe: characterListData.results[index])
     }
     
     func loadData(query: String? = nil) {
         let endpoint = factory.createEndpoint(query: query)
         service.getData(endpoint: endpoint, completion: {[weak self] (result: Result<CharactersResponse, Error>) in
+            guard let self = self else {return}
             switch result {
             case .success(let resp):
-                self?.characterListData = resp.data
-                self?.attributexText = resp.attributionText
-                self?.reloadClosure?()
+                self.characterListData = resp.data
+                self.attributexText = resp.attributionText
+                self.reloadClosure?()
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -44,3 +45,4 @@ class HomeViewModel {
         attributexText
     }
 }
+extension HomeViewModel: HomeViewModelRepresentable { }
