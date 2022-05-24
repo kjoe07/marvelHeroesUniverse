@@ -1,6 +1,6 @@
 //
 //  HeroesTableViewCellViewModel.swift
-//  marvelHeroesUniverse
+//  MarvelHeroesUniverse
 //
 //  Created by kjoe on 5/15/22.
 //

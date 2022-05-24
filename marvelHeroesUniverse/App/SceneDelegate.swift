@@ -1,6 +1,6 @@
 //
 //  SceneDelegate.swift
-//  marvelHeroesUniverse
+//  MarvelHeroesUniverse
 //
 //  Created by kjoe on 5/14/22.
 //
@@ -13,9 +13,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         print("here in scene delegate")
-        let HomeVC = HomeViewController(viewModel: HomeViewModel(service: CharacterListService(loader: NetworkLoader()), factory: CharacterListEndpointFactory()))
+        let homeVC = HomeViewController(viewModel: HomeViewModel(service: CharacterListService(loader: NetworkLoader()), factory: CharacterListEndpointFactory()))
         let navigationController = UINavigationController()
-        navigationController.viewControllers.append(HomeVC)
+        navigationController.viewControllers.append(homeVC)
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
         window.rootViewController = navigationController
@@ -24,4 +24,3 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.makeKeyAndVisible()
     }
 }
-

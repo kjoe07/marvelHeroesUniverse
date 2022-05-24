@@ -1,6 +1,6 @@
 //
 //  CharacterListEndpoint.swift
-//  marvelHeroesUniverse
+//  MarvelHeroesUniverse
 //
 //  Created by kjoe on 5/15/22.
 //
@@ -11,7 +11,7 @@ struct CharacterListEnpoint: EndpointProtocol {
     
     var queryItems: [URLQueryItem]?
     
-    var headers: [String : String]?
+    var headers: [String: String]?
     
     var method: HTTPMethod
     

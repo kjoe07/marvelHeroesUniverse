@@ -1,6 +1,6 @@
 //
 //  CharacterData.swift
-//  marvelHeroesUniverse
+//  MarvelHeroesUniverse
 //
 //  Created by kjoe on 5/14/22.
 //
@@ -13,4 +13,3 @@ struct CharacterData: Codable {
     let count: Int
     let results: [MarvelCharacters]
 }
-

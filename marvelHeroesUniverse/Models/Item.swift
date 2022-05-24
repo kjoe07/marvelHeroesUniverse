@@ -1,6 +1,6 @@
 //
 //  Item.swift
-//  marvelHeroesUniverse
+//  MarvelHeroesUniverse
 //
 //  Created by kjoe on 5/14/22.
 //
@@ -11,5 +11,3 @@ struct Item: Codable {
     let name: String
     let type: String?
 }
-
-

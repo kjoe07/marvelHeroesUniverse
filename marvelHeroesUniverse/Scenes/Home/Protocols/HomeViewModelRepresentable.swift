@@ -1,6 +1,6 @@
 //
 //  HomeViewModelRepresentable.swift
-//  marvelHeroesUniverse
+//  MarvelHeroesUniverse
 //
 //  Created by kjoe on 5/15/22.
 //
@@ -14,4 +14,6 @@ protocol HomeViewModelRepresentable {
     func loadData(query: String?)
     
     func footerText() -> String
+    
+    var reloadClosure: (() -> Void)? { get set }
 }

@@ -1,6 +1,6 @@
 //
 //  HeroesTableViewCell.swift
-//  marvelHeroesUniverse
+//  MarvelHeroesUniverse
 //
 //  Created by kjoe on 5/15/22.
 //
@@ -118,7 +118,6 @@ class HeroesTableViewCell: UITableViewCell {
     }
     
     func updateView() {
-        //TODO: - add kingFisher as dependency.
         if let url = viewModel.thumbnailURl() {
             heroeImage.kf.setImage(with: url)
         }
@@ -129,27 +128,32 @@ class HeroesTableViewCell: UITableViewCell {
         storiesNumber.text = viewModel.storiesNumber()
         eventNumber.text = viewModel.eventNumber()
         let number = viewModel.buttonNumber()
-        let n = number < 3 ? number : 3
-        for i in 0..<n {
+        let numb = number < 3 ? number : 3
+        for identifier in 0..<numb {
+            let action = actionClosure(identifier: identifier)
             var configuration = UIButton.Configuration.filled()
             configuration.titlePadding = 10
             configuration.imagePadding = 10
             configuration.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 10, bottom: 8, trailing: 10)
             let button = UIButton(configuration: configuration)
             button.setTitleColor(.systemBackground, for: .normal)
-            button.setTitle(viewModel.titleforButton(at: i), for: .normal)
-            button.addAction(UIAction(title: viewModel.titleforButton(at: i), handler: { _ in
-                if let url = self.viewModel.urlforButtton(at: i) {
-                    if UIApplication.shared.canOpenURL(url) {
-                        UIApplication.shared.open(url)
-                    }
-                }
-            }), for: .primaryActionTriggered)
+            button.setTitle(viewModel.titleforButton(at: identifier), for: .normal)
+            button.addAction(UIAction(title: viewModel.titleforButton(at: identifier), handler: action), for: .primaryActionTriggered)
             buttonStack.addArrangedSubview(button)
         }
         cardView.setNeedsLayout()
         cardView.layoutIfNeeded()
         setNeedsLayout()
         layoutIfNeeded()
+    }
+    func actionClosure(identifier: Int) -> UIActionHandler {
+        let action: UIActionHandler = { _ in
+            if let url = self.viewModel.urlforButtton(at: identifier) {
+                if UIApplication.shared.canOpenURL(url) {
+                    UIApplication.shared.open(url)
+                }
+            }
+        }
+        return action
     }
 }

@@ -1,6 +1,6 @@
 //
 //  HomeViewController.swift
-//  marvelHeroesUniverse
+//  MarvelHeroesUniverse
 //
 //  Created by kjoe on 5/14/22.
 //
@@ -9,14 +9,14 @@ import UIKit
 
 class HomeViewController: UIViewController {
     let tableView: UITableView
-    let viewModel: HomeViewModel
+    var viewModel: HomeViewModelRepresentable
     let searchController = UISearchController(searchResultsController: nil)
     
-    init(viewModel: HomeViewModel) {
+    init(viewModel: HomeViewModelRepresentable) {
         self.viewModel = viewModel
         tableView = UITableView(frame: .zero)
         super.init(nibName: nil, bundle: nil)
-        viewModel.loadData()
+        viewModel.loadData(query: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -88,6 +88,6 @@ extension HomeViewController: UISearchBarDelegate {
         viewModel.loadData(query: searchBar.text)
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        viewModel.loadData()
+        viewModel.loadData(query: nil)
     }
 }

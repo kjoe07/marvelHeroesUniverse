@@ -1,6 +1,6 @@
 //
 //  MarvelCharacters.swift
-//  marvelHeroesUniverse
+//  MarvelHeroesUniverse
 //
 //  Created by kjoe on 5/14/22.
 //

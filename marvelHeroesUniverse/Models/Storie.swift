@@ -1,6 +1,6 @@
 //
 //  Stories.swift
-//  marvelHeroesUniverse
+//  MarvelHeroesUniverse
 //
 //  Created by kjoe on 5/14/22.
 //
@@ -12,4 +12,3 @@ struct Storie: Codable {
     var items: [Item]
     var returned: Int
 }
-

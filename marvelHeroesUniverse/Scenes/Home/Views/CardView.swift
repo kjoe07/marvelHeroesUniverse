@@ -1,6 +1,6 @@
 //
 //  CardView.swift
-//  marvelHeroesUniverse
+//  MarvelHeroesUniverse
 //
 //  Created by kjoe on 5/15/22.
 //
@@ -15,16 +15,8 @@ import UIKit
     @IBInspectable var shadowOpacity: CGFloat = 0.16
     @IBInspectable var shadowBlur: CGFloat = 20
     @IBInspectable var shadowSpread: CGFloat = 0
-    @IBInspectable var borderWidth: CGFloat = 0 {
-        didSet {
-            layer.borderWidth = borderWidth
-        }
-    }
-    @IBInspectable var borderColor: UIColor = .black {
-        didSet {
-            layer.borderColor = borderColor.cgColor
-        }
-    }
+    @IBInspectable var borderWidth: CGFloat = 0
+    @IBInspectable var borderColor: UIColor = .black 
     override func layoutSubviews() {
         layer.cornerRadius = cornerRadius
         layer.shadowColor = shadowColor.cgColor
