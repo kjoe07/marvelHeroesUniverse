@@ -10,37 +10,55 @@ class HomeViewModel {
     private let service: ServiceProtocol
     private let factory: EndpointFactory
     var reloadClosure: (() -> Void)?
+    var errorClosure: ((String) -> Void)?
     private var attributexText: String = ""
-    private var characterListData: CharacterData!
+    private var characterListData: CharacterData
+    private var searchResultData: CharacterData
+    private var isSearching = false
     
-    init(service: ServiceProtocol, factory: EndpointFactory) {
+    init(service: ServiceProtocol, factory: EndpointFactory, data: CharacterData? = nil) {
         self.service = service
         self.factory = factory
+        characterListData = data ?? CharacterData(offset: 0, limit: 0, total: 0, count: 0, results: [])
+        searchResultData = characterListData
     }
     
     func numberOfItems() -> Int {
-        return characterListData != nil ? characterListData.results.count : 0
+        isSearching ? searchResultData.results.count : characterListData.results.count
     }
     
     func viewModelfor(index: Int) -> HeroesTableViewCellViewModelRepresentable {
-        return HeroesTableViewCellViewModel(heroe: characterListData.results[index])
+        let heroe = isSearching ? searchResultData.results[index] : characterListData.results[index]
+        return HeroesTableViewCellViewModel(heroe: heroe)
     }
     
     func loadData(query: String? = nil) {
-        let endpoint = factory.createEndpoint(query: query)
+        isSearching = query != nil
+        let data = isSearching ? searchResultData : characterListData
+        let endpoint = factory.createEndpoint(query: query, characterData: data)
+        let offset = isSearching ? searchResultData.offset : characterListData.offset
+        let total = isSearching ? searchResultData.total : characterListData.total
+        guard  offset == 0 || offset < total else {
+            errorClosure?("No more info provided")
+            return }
         service.getData(endpoint: endpoint, completion: {[weak self] (result: Result<CharactersResponse, Error>) in
             guard let self = self else {return}
             switch result {
             case .success(let resp):
-                self.characterListData = resp.data
+                if self.isSearching {
+                    self.searchResultData.count += resp.data.count
+                    self.searchResultData.results.append(contentsOf: resp.data.results)
+                } else {
+                    self.characterListData.count += resp.data.count
+                    self.characterListData.results.append(contentsOf: resp.data.results)
+                }
                 self.attributexText = resp.attributionText
                 self.reloadClosure?()
             case .failure(let error):
-                print(error.localizedDescription)
+                self.errorClosure?(error.localizedDescription)
             }
         })
     }
-    
     func footerText() -> String {
         attributexText
     }

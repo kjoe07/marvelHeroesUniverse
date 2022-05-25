@@ -7,13 +7,18 @@
 
 import Foundation
 struct CharacterListEndpointFactory {
-    func createEndpoint(query: String? = nil) -> EndpointProtocol {
+    func createEndpoint(query: String? = nil, characterData: CharacterData) -> EndpointProtocol {
         let path = "/v1/public/characters"
-        var items = [URLQueryItem(name: "apikey", value: apikey)]
+        
+        var items: [URLQueryItem] = []
         
         if query != nil {
-            items.append(URLQueryItem(name: "name", value: query))
+            items.append(URLQueryItem(name: "nameStartsWith", value: query))
         }
+        
+        let qItem = URLQueryItem(name: "offset", value: "\(characterData.count)")
+        items.append(qItem)
+        items.append(URLQueryItem(name: "apikey", value: apikey))
         
         let headers = [
             "Content-Type": "application/json",

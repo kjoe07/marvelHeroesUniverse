@@ -45,7 +45,7 @@ class HomeViewControllerTest: XCTestCase {
         XCTAssertEqual(numberOfRows(in: sut.tableView), 1)
         XCTAssertTrue(sut.searchController.searchBar.text!.isEmpty)
     }
-    func test_willDisplay_setsBackgroundColor() {
+    func test_didEndDisplayingCellRemoveButon() {
         // given
         let cell = HeroesTableViewCell()
         // when
@@ -56,12 +56,25 @@ class HomeViewControllerTest: XCTestCase {
         XCTAssertEqual(cell.cardView.borderWidth, 0)
         XCTAssertEqual(cell.cardView.borderColor, .black)
     }
+    func testDidEndDisplayinTotalless10CallForMoreData() {
+        // given
+        let expec = expectation(description: "closure called")
+        let data = loadStubFromBundle(withName: "characterList", extension: "json")
+        let viewM: FakeMoreThan2HomeViewModel = FakeMoreThan2HomeViewModel(data: data)
+        sut.viewModel = viewM
+        let cell = HeroesTableViewCell()
+        viewM.reloadClosure = {
+            expec.fulfill()
+        }
+        let indexPath = IndexPath(row: 10, section: 0)
+        sut.tableView(UITableView(), didEndDisplaying: cell, forRowAt: indexPath)
+        wait(for: [expec], timeout: 1.0)
+    }
     func testRelaodlClosureAddTableFooterView() {
          // given
         let window = UIWindow(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
         window.rootViewController = sut
         window.makeKeyAndVisible()
-        
         // when
         viewModel.reloadClosure?()
         // then

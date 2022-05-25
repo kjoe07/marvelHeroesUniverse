@@ -47,6 +47,4 @@ struct FakeHeroesTableViewCellViewModel: HeroesTableViewCellViewModelRepresentab
     func urlforButtton(at index: Int) -> URL? {
         URL(string: "https://google.com/search?")
     }
-    
-
 }

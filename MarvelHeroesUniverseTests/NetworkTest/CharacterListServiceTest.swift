@@ -9,7 +9,7 @@ import XCTest
 @testable import MarvelHeroesUniverse
 class CharacterListServiceTest: XCTestCase {
     var sut: CharacterListService!
-    
+    let characterData = CharacterData(offset: 0, limit: 0, total: 0, count: 0, results: [])
     override func setUpWithError() throws {
         let data = loadStubFromBundle(withName: "characterList", extension: "json")
         let fakeLoader = FakeLoader(data: data)
@@ -21,7 +21,7 @@ class CharacterListServiceTest: XCTestCase {
     }
     
     func testSutWithSuccessData() {
-        let endpoint = CharacterListEndpointFactory().createEndpoint()
+        let endpoint = CharacterListEndpointFactory().createEndpoint(characterData: characterData)
         sut.getData(endpoint: endpoint, completion: { (result: Result<CharactersResponse, Error>) in
             switch result {
             case .success(let response):
@@ -33,7 +33,7 @@ class CharacterListServiceTest: XCTestCase {
     }
     func testSutWithFailureData() {
         (sut.loader as! FakeLoader).error = true
-        let endpoint = CharacterListEndpointFactory().createEndpoint()
+        let endpoint = CharacterListEndpointFactory().createEndpoint(characterData: characterData)
         sut.getData(endpoint: endpoint, completion: { (result: Result<CharactersResponse, Error>) in
             switch result {
             case .success:

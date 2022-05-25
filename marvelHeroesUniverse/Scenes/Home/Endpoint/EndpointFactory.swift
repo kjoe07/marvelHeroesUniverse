@@ -7,5 +7,5 @@
 
 import Foundation
 protocol EndpointFactory {
-    func createEndpoint(query: String?) -> EndpointProtocol
+    func createEndpoint(query: String?, characterData: CharacterData) -> EndpointProtocol
 }

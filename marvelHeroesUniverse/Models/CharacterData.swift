@@ -10,6 +10,6 @@ struct CharacterData: Codable {
     let offset: Int
     let limit: Int
     let total: Int
-    let count: Int
-    let results: [MarvelCharacters]
+    var count: Int
+    var results: [MarvelCharacters]
 }

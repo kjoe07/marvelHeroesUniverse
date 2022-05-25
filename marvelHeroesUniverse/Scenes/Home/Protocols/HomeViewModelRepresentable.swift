@@ -16,4 +16,5 @@ protocol HomeViewModelRepresentable {
     func footerText() -> String
     
     var reloadClosure: (() -> Void)? { get set }
+    var errorClosure: ((String) -> Void)? { get set }
 }

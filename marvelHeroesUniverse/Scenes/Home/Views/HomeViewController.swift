@@ -42,6 +42,7 @@ class HomeViewController: UIViewController {
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.automaticallyShowsCancelButton = true
         searchController.searchBar.delegate = self
+        navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.searchController = searchController
         tableView.register(HeroesTableViewCell.self, forCellReuseIdentifier: HeroesTableViewCell.cellIdentifier)
         tableView.dataSource = self
@@ -56,12 +57,19 @@ class HomeViewController: UIViewController {
                 self.tableView.reloadData()
             }
         }
+        viewModel.errorClosure = { error in
+            // TODO: - show some message when error string, used for network error or for loaded all data from search or from endpoint
+            print(error)
+        }
     }
 }
 
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: HeroesTableViewCell.cellIdentifier) as! HeroesTableViewCell
+        _ = cell.buttonStack.subviews.map({
+            $0.removeFromSuperview()
+        })
         cell.set(viewModel: viewModel.viewModelfor(index: indexPath.row))
         return cell
     }
@@ -77,10 +85,11 @@ extension HomeViewController: UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let heroCell = cell as! HeroesTableViewCell
-        heroCell.buttonStack.subviews.forEach({
-            $0.removeFromSuperview()
-        })
         heroCell.heroeImage.kf.cancelDownloadTask()
+        if indexPath.row == viewModel.numberOfItems() - 10 {
+            let searchterm: Bool = searchController.searchBar.text?.isEmpty ?? true
+            viewModel.loadData(query: searchterm ? nil :  searchController.searchBar.text)
+        }
     }
 }
 extension HomeViewController: UISearchBarDelegate {
@@ -89,5 +98,6 @@ extension HomeViewController: UISearchBarDelegate {
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         viewModel.loadData(query: nil)
+        tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .none, animated: true)
     }
 }

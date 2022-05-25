@@ -36,4 +36,33 @@ class HomeViewModelTest: XCTestCase {
         sut.loadData()
         wait(for: [expectation], timeout: 1.0)
     }
+
+    func testNumberOfItemsEquals20Search() {
+        let search = loadStubFromBundle(withName: "searchResult", extension: "json")
+        let newSut = HomeViewModel(service: FakeCharacterListService(data: search),
+                            factory: FakeEndpointFactory())
+        let expectation = expectation(description: "data loaded")
+        newSut.reloadClosure = {
+            XCTAssertEqual(newSut.numberOfItems(), 1)
+            XCTAssertEqual(newSut.footerText(), "Data provided by Marvel. © 2022 MARVEL")
+            let viewM = newSut.viewModelfor(index: 0)
+            XCTAssertEqual(viewM.heroeName(), "Spider-Woman (Mattie Franklin)")
+            expectation.fulfill()
+        }
+        newSut.loadData(query: "spider")
+        wait(for: [expectation], timeout: 1.0)
+    }
+    func testLoadMoreDataWithGreaterthanTotal() {
+        let search = loadStubFromBundle(withName: "allresultSearch", extension: "json")
+        let char = try! JSONDecoder().decode(CharactersResponse.self, from: search)
+        let newSut = HomeViewModel(service: FakeCharacterListService(data: search),
+                                   factory: FakeEndpointFactory(), data: char.data)
+        let expectation = expectation(description: "data loaded")
+        newSut.errorClosure = { error in
+            XCTAssertEqual(error, "No more info provided")
+            expectation.fulfill()
+        }
+        newSut.loadData(query: "spider")
+        wait(for: [expectation], timeout: 1.0)
+    }
 }

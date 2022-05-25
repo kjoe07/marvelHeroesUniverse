@@ -25,6 +25,8 @@
 		11B16438283AA5460030293B /* TableViewTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B16437283AA5460030293B /* TableViewTestHelpers.swift */; };
 		11B1643B283AA5880030293B /* HomeViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B1643A283AA5880030293B /* HomeViewControllerTest.swift */; };
 		11B1643D283AA5F80030293B /* FakeHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B1643C283AA5F80030293B /* FakeHomeViewModel.swift */; };
+		11C7CAD0283DCA4A00AE94C2 /* searchResult.json in Resources */ = {isa = PBXBuildFile; fileRef = 11C7CACF283DCA4A00AE94C2 /* searchResult.json */; };
+		11C7CAD2283DD2B700AE94C2 /* allresultSearch.json in Resources */ = {isa = PBXBuildFile; fileRef = 11C7CAD1283DD2B700AE94C2 /* allresultSearch.json */; };
 		11E2A78E2831B1B10030FBDF /* HeroesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E2A78D2831B1B10030FBDF /* HeroesTableViewCell.swift */; };
 		11E2A7902831B2670030FBDF /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E2A78F2831B2670030FBDF /* CardView.swift */; };
 		11E2A7922831BCE40030FBDF /* HeroesTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E2A7912831BCE40030FBDF /* HeroesTableViewCellViewModel.swift */; };
@@ -93,6 +95,8 @@
 		11B16437283AA5460030293B /* TableViewTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewTestHelpers.swift; sourceTree = "<group>"; };
 		11B1643A283AA5880030293B /* HomeViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerTest.swift; sourceTree = "<group>"; };
 		11B1643C283AA5F80030293B /* FakeHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeHomeViewModel.swift; sourceTree = "<group>"; };
+		11C7CACF283DCA4A00AE94C2 /* searchResult.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = searchResult.json; sourceTree = "<group>"; };
+		11C7CAD1283DD2B700AE94C2 /* allresultSearch.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = allresultSearch.json; sourceTree = "<group>"; };
 		11E2A78D2831B1B10030FBDF /* HeroesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesTableViewCell.swift; sourceTree = "<group>"; };
 		11E2A78F2831B2670030FBDF /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		11E2A7912831BCE40030FBDF /* HeroesTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesTableViewCellViewModel.swift; sourceTree = "<group>"; };
@@ -181,7 +185,9 @@
 		1111417A2835CDD20094A716 /* MockData */ = {
 			isa = PBXGroup;
 			children = (
+				11C7CACF283DCA4A00AE94C2 /* searchResult.json */,
 				1111417B2835CDDE0094A716 /* characterList.json */,
+				11C7CAD1283DD2B700AE94C2 /* allresultSearch.json */,
 			);
 			path = MockData;
 			sourceTree = "<group>";
@@ -499,7 +505,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11C7CAD0283DCA4A00AE94C2 /* searchResult.json in Resources */,
 				1111417C2835CDDE0094A716 /* characterList.json in Resources */,
+				11C7CAD2283DD2B700AE94C2 /* allresultSearch.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,0 +1,47 @@
+# By default, SwiftLint uses a set of sensible default rules you can adjust:
+disabled_rules: # rule identifiers turned on by default to exclude from running
+  - todo
+  - force_cast 
+  - function_body_length
+  - trailing_whitespace
+opt_in_rules: # some rules are turned off by default, so you need to opt-in
+  - comment_spacing
+  # - empty_xctest_method # TODO: Fix issues with tearDownWithError before enabling
+  - orphaned_doc_comment
+
+included: # paths to include during linting. `--path` is ignored if present.
+
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - Pods
+analyzer_rules: # Rules run by `swiftlint analyze`
+  - explicit_self
+
+# Errors
+comment_spacing: error
+# empty_xctest_method: error
+# force_try: error # TODO: Fix errors and enable this
+# force_cast: error # TODO: Fix errors and enable this
+orphaned_doc_comment: error
+line_length:
+ warning: 180
+ error: 200
+  
+identifier_name:
+  min_length: # only min_length
+    error: 4 # only error
+  excluded: # excluded via string array
+  - url
+  - put
+  - get
+  - Url
+  - id
+type_name:
+  min_length:
+    error: 4
+  max_length:
+    warning: 40
+    error: 50
+  excluded:
+  - Url
+
+reporter: "xcode" # reporter type (xcode, json, csv, checkstyle, codeclimate, junit, html, emoji, sonarqube, markdown, github-actions-logging)
