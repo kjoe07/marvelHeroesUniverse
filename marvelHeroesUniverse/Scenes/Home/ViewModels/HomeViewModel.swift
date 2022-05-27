@@ -62,5 +62,8 @@ class HomeViewModel {
     func footerText() -> String {
         attributexText
     }
+    func select(index: Int) {
+        
+    }
 }
 extension HomeViewModel: HomeViewModelRepresentable { }

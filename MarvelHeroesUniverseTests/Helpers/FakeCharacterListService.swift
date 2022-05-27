@@ -30,9 +30,10 @@ class FakeFailureCharacterListService: ServiceProtocol {
 class FakeCharacterListService: ServiceProtocol {
     let successService: FakeSuscessCharacterListService
     let failureService: FakeFailureCharacterListService
-    var failure = false
+    var failure: Bool
     
-    init(data: Data) {
+    init(data: Data, failure: Bool = false) {
+        self.failure = failure
         successService = FakeSuscessCharacterListService(data: data)
         failureService = FakeFailureCharacterListService()
     }

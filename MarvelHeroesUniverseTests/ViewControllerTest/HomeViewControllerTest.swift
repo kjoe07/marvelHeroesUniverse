@@ -10,6 +10,7 @@ import XCTest
 class HomeViewControllerTest: XCTestCase {
     var sut: HomeViewController!
     var viewModel: FakeHomeViewModel!
+    
     override func setUpWithError() throws {
         let data = loadStubFromBundle(withName: "characterList", extension: "json")
         viewModel = FakeHomeViewModel(data: data)
@@ -26,25 +27,30 @@ class HomeViewControllerTest: XCTestCase {
         XCTAssertNotNil(sut.tableView.delegate, "delegate")
         XCTAssertNotNil(sut.navigationItem.searchController)
     }
+    
     func testNumberOfRowsShouldBe1() {
         XCTAssertEqual(numberOfRows(in: sut.tableView), 1)
     }
+    
     func testCellForRowAtWithRow1ShouldSetCellLabelToTwo() {
         let cell = sut.tableView.dataSource?.tableView(
                 sut.tableView, cellForRowAt: IndexPath(row: 0, section: 0)) as! HeroesTableViewCell
         XCTAssertEqual(cell.buttonStack.subviews.count, 3)
         XCTAssertEqual(cell.heroeName.text, "3-D Man")
     }
+    
     func testSearchButton() {
         sut.searchController.searchBar.text = "search"
         sut.searchBarSearchButtonClicked(sut.searchController.searchBar)
         XCTAssertEqual(numberOfRows(in: sut.tableView), 2)
     }
+    
     func testSearhCancelButton() {
         sut.searchBarCancelButtonClicked(sut.searchController.searchBar)
         XCTAssertEqual(numberOfRows(in: sut.tableView), 1)
         XCTAssertTrue(sut.searchController.searchBar.text!.isEmpty)
     }
+    
     func test_didEndDisplayingCellRemoveButon() {
         // given
         let cell = HeroesTableViewCell()
@@ -56,6 +62,7 @@ class HomeViewControllerTest: XCTestCase {
         XCTAssertEqual(cell.cardView.borderWidth, 0)
         XCTAssertEqual(cell.cardView.borderColor, .black)
     }
+    
     func testDidEndDisplayinTotalless10CallForMoreData() {
         // given
         let expec = expectation(description: "closure called")
@@ -70,6 +77,7 @@ class HomeViewControllerTest: XCTestCase {
         sut.tableView(UITableView(), didEndDisplaying: cell, forRowAt: indexPath)
         wait(for: [expec], timeout: 1.0)
     }
+    
     func testRelaodlClosureAddTableFooterView() {
          // given
         let window = UIWindow(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
@@ -81,4 +89,13 @@ class HomeViewControllerTest: XCTestCase {
         RunLoop.current.run(until: .now + 2)
         XCTAssertNotNil(sut.tableView.tableFooterView)
     }
+    
+    func testReuseCellClearsButton() {
+        let indexPath = IndexPath(row: 0, section: 0)
+        let cell = sut.tableView(sut.tableView, cellForRowAt: indexPath) as! HeroesTableViewCell
+        XCTAssertEqual(cell.buttonStack.subviews.count, 3)
+        cell.prepareForReuse()
+        XCTAssertEqual(cell.buttonStack.subviews.count, 0)
+    }
+
 }

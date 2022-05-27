@@ -8,9 +8,11 @@
 import Foundation
 @testable import MarvelHeroesUniverse
 struct FakeEndpointFactory: EndpointFactory {
+    
     func createEndpoint(query: String?, characterData: CharacterData) -> EndpointProtocol {
         FakeEndpoint(path: "/method/one", method: .get)
     }
+    
 }
 
 struct FakeEndpoint: EndpointProtocol {

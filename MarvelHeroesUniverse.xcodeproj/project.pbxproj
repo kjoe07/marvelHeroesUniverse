@@ -16,6 +16,8 @@
 		111141802835DA5F0094A716 /* HomeViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1111417F2835DA5F0094A716 /* HomeViewModelTest.swift */; };
 		111141822835DD0A0094A716 /* FakeEnpdointFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111141812835DD0A0094A716 /* FakeEnpdointFactory.swift */; };
 		111141842835DE490094A716 /* FakeCharacterListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111141832835DE490094A716 /* FakeCharacterListService.swift */; };
+		116BFBB228405898009C1758 /* MockTableview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116BFBB128405898009C1758 /* MockTableview.swift */; };
+		116BFBB52840606A009C1758 /* HeroesTableViewCellViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116BFBB42840606A009C1758 /* HeroesTableViewCellViewModelTest.swift */; };
 		11A0622C2830B480006EC955 /* CharacterListEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A0622B2830B480006EC955 /* CharacterListEndpoint.swift */; };
 		11A0622E2830B581006EC955 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A0622D2830B581006EC955 /* HomeViewModel.swift */; };
 		11A062312830B8C5006EC955 /* CharacterListEndpointFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A062302830B8C5006EC955 /* CharacterListEndpointFactory.swift */; };
@@ -86,6 +88,8 @@
 		1111417F2835DA5F0094A716 /* HomeViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTest.swift; sourceTree = "<group>"; };
 		111141812835DD0A0094A716 /* FakeEnpdointFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeEnpdointFactory.swift; sourceTree = "<group>"; };
 		111141832835DE490094A716 /* FakeCharacterListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeCharacterListService.swift; sourceTree = "<group>"; };
+		116BFBB128405898009C1758 /* MockTableview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTableview.swift; sourceTree = "<group>"; };
+		116BFBB42840606A009C1758 /* HeroesTableViewCellViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesTableViewCellViewModelTest.swift; sourceTree = "<group>"; };
 		11A0622B2830B480006EC955 /* CharacterListEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListEndpoint.swift; sourceTree = "<group>"; };
 		11A0622D2830B581006EC955 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		11A062302830B8C5006EC955 /* CharacterListEndpointFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListEndpointFactory.swift; sourceTree = "<group>"; };
@@ -169,6 +173,7 @@
 				11B16437283AA5460030293B /* TableViewTestHelpers.swift */,
 				11B1643C283AA5F80030293B /* FakeHomeViewModel.swift */,
 				11AE3DE5283D998700B3B806 /* FakeHeroesTableViewCellViewModel.swift */,
+				116BFBB128405898009C1758 /* MockTableview.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -190,6 +195,15 @@
 				11C7CAD1283DD2B700AE94C2 /* allresultSearch.json */,
 			);
 			path = MockData;
+			sourceTree = "<group>";
+		};
+		116BFBB328405DE3009C1758 /* ViewModelTest */ = {
+			isa = PBXGroup;
+			children = (
+				1111417F2835DA5F0094A716 /* HomeViewModelTest.swift */,
+				116BFBB42840606A009C1758 /* HeroesTableViewCellViewModelTest.swift */,
+			);
+			path = ViewModelTest;
 			sourceTree = "<group>";
 		};
 		11A0622A2830B46E006EC955 /* Endpoint */ = {
@@ -253,11 +267,11 @@
 		11FAB728283065F00037387E /* MarvelHeroesUniverseTests */ = {
 			isa = PBXGroup;
 			children = (
+				116BFBB328405DE3009C1758 /* ViewModelTest */,
 				11B16439283AA5670030293B /* ViewControllerTest */,
 				1111417A2835CDD20094A716 /* MockData */,
 				111141752835CCCB0094A716 /* NetworkTest */,
 				111141702835C8F40094A716 /* Helpers */,
-				1111417F2835DA5F0094A716 /* HomeViewModelTest.swift */,
 			);
 			path = MarvelHeroesUniverseTests;
 			sourceTree = "<group>";
@@ -582,6 +596,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				11B1643D283AA5F80030293B /* FakeHomeViewModel.swift in Sources */,
+				116BFBB228405898009C1758 /* MockTableview.swift in Sources */,
 				111141722835C9060094A716 /* MockURLProtocol.swift in Sources */,
 				11B1643B283AA5880030293B /* HomeViewControllerTest.swift in Sources */,
 				111141792835CD410094A716 /* FakeLoader.swift in Sources */,
@@ -592,6 +607,7 @@
 				111141842835DE490094A716 /* FakeCharacterListService.swift in Sources */,
 				111141802835DA5F0094A716 /* HomeViewModelTest.swift in Sources */,
 				1111417E2835CDFF0094A716 /* XCTestExtension.swift in Sources */,
+				116BFBB52840606A009C1758 /* HeroesTableViewCellViewModelTest.swift in Sources */,
 				1111416F2835C8BA0094A716 /* DataLoaderTest.swift in Sources */,
 				11AE3DE6283D998700B3B806 /* FakeHeroesTableViewCellViewModel.swift in Sources */,
 			);

@@ -156,4 +156,10 @@ class HeroesTableViewCell: UITableViewCell {
         }
         return action
     }
+    override func prepareForReuse() {
+        heroeImage.kf.cancelDownloadTask()
+        buttonStack.subviews.forEach({
+            $0.removeFromSuperview()
+        })
+    }
 }

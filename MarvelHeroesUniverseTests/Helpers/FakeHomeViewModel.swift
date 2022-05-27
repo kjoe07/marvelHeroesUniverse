@@ -14,6 +14,8 @@ class FakeHomeViewModel: HomeViewModelRepresentable {
     let fullData: [MarvelCharacters]
     let data: Data
     var closure: (() -> Void)?
+    var selectIndexCall = 0
+    var selectIndexClosure: ((Int) -> Void)?
     
     init(data: Data) {
         self.data = data
@@ -40,6 +42,10 @@ class FakeHomeViewModel: HomeViewModelRepresentable {
     func footerText() -> String {
         "Data provided by Marvel. © 2022 MARVEL"
     }
+    
+    func select(index: Int) {
+        selectIndexCall += 1
+    }
 }
 class FakeMoreThan2HomeViewModel: HomeViewModelRepresentable {
     var reloadClosure: (() -> Void)?
@@ -47,7 +53,9 @@ class FakeMoreThan2HomeViewModel: HomeViewModelRepresentable {
     var heroes: [MarvelCharacters]
     let fullData: [MarvelCharacters]
     let data: Data
+    var selectIndexCall = 0
     var closure: (() -> Void)?
+    var selectIndexClosure: ((Int) -> Void)?
     
     init(data: Data) {
         self.data = data
@@ -73,5 +81,9 @@ class FakeMoreThan2HomeViewModel: HomeViewModelRepresentable {
     
     func footerText() -> String {
         "Data provided by Marvel. © 2022 MARVEL"
+    }
+    
+    func select(index: Int) {
+        selectIndexCall += 1
     }
 }

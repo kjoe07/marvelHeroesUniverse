@@ -67,25 +67,20 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: HeroesTableViewCell.cellIdentifier) as! HeroesTableViewCell
-        _ = cell.buttonStack.subviews.map({
-            $0.removeFromSuperview()
-        })
         cell.set(viewModel: viewModel.viewModelfor(index: indexPath.row))
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(viewModel.numberOfItems())
         return viewModel.numberOfItems()
     }
 }
 
 extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.select(index: indexPath.row)
     }
     func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let heroCell = cell as! HeroesTableViewCell
-        heroCell.heroeImage.kf.cancelDownloadTask()
         if indexPath.row == viewModel.numberOfItems() - 10 {
             let searchterm: Bool = searchController.searchBar.text?.isEmpty ?? true
             viewModel.loadData(query: searchterm ? nil :  searchController.searchBar.text)

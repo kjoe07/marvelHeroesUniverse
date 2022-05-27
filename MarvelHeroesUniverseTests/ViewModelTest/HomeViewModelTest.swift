@@ -65,4 +65,14 @@ class HomeViewModelTest: XCTestCase {
         newSut.loadData(query: "spider")
         wait(for: [expectation], timeout: 1.0)
     }
+    func testLoadDataWithInvalidFormat() {
+        let newSut = HomeViewModel(service: FakeCharacterListService(data: Data(), failure: true),
+                            factory: FakeEndpointFactory())
+        let expectation = expectation(description: "error closure called")
+        newSut.errorClosure = { _ in
+            expectation.fulfill()
+        }
+        newSut.loadData(query: "spider")
+        wait(for: [expectation], timeout: 1.0)
+    }
 }
