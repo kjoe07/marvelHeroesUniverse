@@ -11,9 +11,7 @@ opt_in_rules: # some rules are turned off by default, so you need to opt-in
   - orphaned_doc_comment
 
 included: # paths to include during linting. `--path` is ignored if present.
-  - Call2ActionDemo
-  - Call2ActionDemoTests
-  - Call2ActionDemoUITests
+
 excluded: # paths to ignore during linting. Takes precedence over `included`.
   - Pods
 analyzer_rules: # Rules run by `swiftlint analyze`
@@ -33,6 +31,7 @@ identifier_name:
   - url
   - sut
   - row
+  - at
 type_name:
   min_length:
     error: 4

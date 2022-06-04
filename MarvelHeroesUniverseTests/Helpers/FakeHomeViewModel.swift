@@ -8,6 +8,7 @@
 import Foundation
 @testable import MarvelHeroesUniverse
 class FakeHomeViewModel: HomeViewModelRepresentable {
+    
     var reloadClosure: (() -> Void)?
     var errorClosure: ((String) -> Void)?
     var heroes: [MarvelCharacters]
@@ -16,6 +17,7 @@ class FakeHomeViewModel: HomeViewModelRepresentable {
     var closure: (() -> Void)?
     var selectIndexCall = 0
     var selectIndexClosure: ((Int) -> Void)?
+    var navigateClosure: ((HeroeDetailsViewModelRepresentable) -> Void)?
     
     init(data: Data) {
         self.data = data
@@ -45,6 +47,8 @@ class FakeHomeViewModel: HomeViewModelRepresentable {
     
     func select(index: Int) {
         selectIndexCall += 1
+        selectIndexClosure?(selectIndexCall)
+        navigateClosure?(FakeHeroeDetailsViewModel())
     }
 }
 class FakeMoreThan2HomeViewModel: HomeViewModelRepresentable {
@@ -55,6 +59,7 @@ class FakeMoreThan2HomeViewModel: HomeViewModelRepresentable {
     let data: Data
     var selectIndexCall = 0
     var closure: (() -> Void)?
+    var navigateClosure: ((HeroeDetailsViewModelRepresentable) -> Void)?
     var selectIndexClosure: ((Int) -> Void)?
     
     init(data: Data) {
@@ -85,5 +90,6 @@ class FakeMoreThan2HomeViewModel: HomeViewModelRepresentable {
     
     func select(index: Int) {
         selectIndexCall += 1
+        selectIndexClosure?(selectIndexCall)
     }
 }

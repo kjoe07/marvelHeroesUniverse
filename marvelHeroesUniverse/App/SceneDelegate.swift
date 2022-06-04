@@ -12,8 +12,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        print("here in scene delegate")
-        let homeVC = HomeViewController(viewModel: HomeViewModel(service: CharacterListService(loader: NetworkLoader()), factory: CharacterListEndpointFactory()))
+        let loader: NetworkLoader = NetworkLoader()
+        let service: CharacterListService = CharacterListService(loader: loader)
+        let factory: CharacterListEndpointFactory = CharacterListEndpointFactory()
+        let homeVC = HomeViewController(viewModel: HomeViewModel(service: service, factory: factory))
         let navigationController = UINavigationController()
         navigationController.viewControllers.append(homeVC)
         guard let windowScene = (scene as? UIWindowScene) else { return }

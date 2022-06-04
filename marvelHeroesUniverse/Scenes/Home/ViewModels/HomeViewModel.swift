@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreMedia
 class HomeViewModel {
     private let service: ServiceProtocol
     private let factory: EndpointFactory
@@ -15,6 +16,7 @@ class HomeViewModel {
     private var characterListData: CharacterData
     private var searchResultData: CharacterData
     private var isSearching = false
+    var navigateClosure: ((HeroeDetailsViewModelRepresentable) -> Void)?
     
     init(service: ServiceProtocol, factory: EndpointFactory, data: CharacterData? = nil) {
         self.service = service
@@ -63,7 +65,9 @@ class HomeViewModel {
         attributexText
     }
     func select(index: Int) {
-        
+        let heroe = isSearching ? searchResultData.results[index] : characterListData.results[index]
+        let viewModel = HeroeDetailsViewModel(heroe: heroe, attributted: attributexText)
+        navigateClosure?(viewModel)
     }
 }
 extension HomeViewModel: HomeViewModelRepresentable { }

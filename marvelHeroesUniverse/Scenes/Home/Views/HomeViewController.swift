@@ -10,6 +10,7 @@ import UIKit
 class HomeViewController: UIViewController {
     let tableView: UITableView
     var viewModel: HomeViewModelRepresentable
+    let activity = UIActivityIndicatorView(style: .large)
     let searchController = UISearchController(searchResultsController: nil)
     
     init(viewModel: HomeViewModelRepresentable) {
@@ -48,10 +49,18 @@ class HomeViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.backgroundColor = .systemBackground
+        activity.hidesWhenStopped = true
+        activity.startAnimating()
+        view.addSubview(activity)
+        NSLayoutConstraint.activate([
+            activity.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            activity.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor)
+        ])
         viewModel.reloadClosure = { [weak self] in
             DispatchQueue.main.async {
                 guard let self = self else {return}
                 let label = UILabel(frame: .zero)
+                self.activity.stopAnimating()
                 label.text = self.viewModel.footerText()
                 self.tableView.tableFooterView = label
                 self.tableView.reloadData()
@@ -60,6 +69,12 @@ class HomeViewController: UIViewController {
         viewModel.errorClosure = { error in
             // TODO: - show some message when error string, used for network error or for loaded all data from search or from endpoint
             print(error)
+        }
+        viewModel.navigateClosure = { [weak self] viewModel in
+            DispatchQueue.main.async {
+                let detailVC = HeroeDetailsTableViewController(viewModel: viewModel)
+                self?.navigationController?.pushViewController(detailVC, animated: true)
+            }
         }
     }
 }

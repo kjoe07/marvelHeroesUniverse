@@ -9,6 +9,7 @@ import XCTest
 @testable import MarvelHeroesUniverse
 class HomeViewModelTest: XCTestCase {
     var sut: HomeViewModel!
+    
     override func setUpWithError() throws {
         let data = loadStubFromBundle(withName: "characterList", extension: "json")
         sut = HomeViewModel(service: FakeCharacterListService(data: data),
@@ -18,12 +19,15 @@ class HomeViewModelTest: XCTestCase {
     override func tearDownWithError() throws {
         sut = nil
     }
+    
     func testNumberOfItemsIs0withoutCallLoadData() {
         XCTAssertEqual(sut.numberOfItems(), 0)
     }
+    
     func testNumbeOfItemsIsEqual20isFalse() {
         XCTAssertNotEqual(sut.numberOfItems(), 20)
     }
+    
     func testNumberOfItemsEquals20() {
         let expectation = expectation(description: "data loaded")
         sut.reloadClosure = {
@@ -52,6 +56,7 @@ class HomeViewModelTest: XCTestCase {
         newSut.loadData(query: "spider")
         wait(for: [expectation], timeout: 1.0)
     }
+    
     func testLoadMoreDataWithGreaterthanTotal() {
         let search = loadStubFromBundle(withName: "allresultSearch", extension: "json")
         let char = try! JSONDecoder().decode(CharactersResponse.self, from: search)
@@ -65,6 +70,7 @@ class HomeViewModelTest: XCTestCase {
         newSut.loadData(query: "spider")
         wait(for: [expectation], timeout: 1.0)
     }
+    
     func testLoadDataWithInvalidFormat() {
         let newSut = HomeViewModel(service: FakeCharacterListService(data: Data(), failure: true),
                             factory: FakeEndpointFactory())
@@ -73,6 +79,18 @@ class HomeViewModelTest: XCTestCase {
             expectation.fulfill()
         }
         newSut.loadData(query: "spider")
+        wait(for: [expectation], timeout: 1.0)
+    }
+    
+    func testSelectIndex() {
+        let data = loadStubFromBundle(withName: "characterList", extension: "json")
+        let character = try! JSONDecoder().decode(CharactersResponse.self, from: data)
+        sut = HomeViewModel(service: FakeCharacterListService(data: data), factory: FakeEndpointFactory(), data: character.data)
+        let expectation = expectation(description: "closure")
+        sut.navigateClosure = { _ in
+            expectation.fulfill()
+        }
+        sut.select(index: 0)
         wait(for: [expectation], timeout: 1.0)
     }
 }

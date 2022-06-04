@@ -29,6 +29,6 @@ class HeroesTableViewCellTest: XCTestCase {
         button.addAction(UIAction(title: "title", handler: action), for: .primaryActionTriggered)
         button.sendActions(for: .primaryActionTriggered)
         RunLoop.current.run(until: .now + 1)
-        XCTAssertEqual(UIApplication.shared.applicationState, UIApplication.State.inactive)        
+        XCTAssertNotEqual(UIApplication.shared.applicationState, UIApplication.State.active)
     }
 }

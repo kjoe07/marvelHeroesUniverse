@@ -98,4 +98,27 @@ class HomeViewControllerTest: XCTestCase {
         XCTAssertEqual(cell.buttonStack.subviews.count, 0)
     }
 
+    func testSelectItem() {
+        let expectation = expectation(description: "closure called with tap true")
+        viewModel.selectIndexClosure = { value in
+            XCTAssertEqual(value, 1)
+            expectation.fulfill()
+        }
+        sut.tableView.delegate?.tableView?(sut.tableView, didSelectRowAt: IndexPath(row: 0, section: 4))
+        wait(for: [expectation], timeout: 1.0)
+    }
+    
+    func testNavigateClosureGet2VCInNavigationViewCotrollersArray() {
+         // given
+        let navC = UINavigationController()
+        navC.viewControllers.append(sut)
+        let window = UIWindow(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
+        window.rootViewController = navC
+        window.makeKeyAndVisible()
+        // when
+        sut.tableView.delegate?.tableView?(sut.tableView, didSelectRowAt: IndexPath(row: 0, section: 4))
+        // then
+        RunLoop.current.run(until: .now + 2)
+        XCTAssertEqual(sut.navigationController?.viewControllers.count, 2)
+    }
 }

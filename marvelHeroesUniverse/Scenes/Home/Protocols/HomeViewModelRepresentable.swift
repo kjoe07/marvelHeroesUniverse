@@ -19,5 +19,6 @@ protocol HomeViewModelRepresentable {
     
     var reloadClosure: (() -> Void)? { get set }    
     var errorClosure: ((String) -> Void)? { get set }
+    var navigateClosure: ((HeroeDetailsViewModelRepresentable) -> Void)? { get set }
     
 }

@@ -35,6 +35,8 @@ identifier_name:
   - get
   - Url
   - id
+  - row
+  - at
 type_name:
   min_length:
     error: 4
